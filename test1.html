@@ -2,9 +2,221 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<title>test1</title>
+<title>Cenovka – Alternatíva 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Deva:wght@600&family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft: #DDC9A3;
+    --kraft-dark: #C7AD7C;
+    --forest: #33502F;
+    --forest-deep: #223A20;
+    --rust: #B5541F;
+    --cream: #F7F1E4;
+    --ink: #2B2620;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:#EDE7DA;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:28px 14px 60px;
+    color:var(--ink);
+  }
+  .page-label{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#8a8070;
+    margin-bottom:18px;
+    text-align:center;
+  }
+  .page-label b{ color:var(--forest); }
+
+  /* ---- the price tag, drawn at real mm size ---- */
+  .tag{
+    position:relative;
+    width:100mm;
+    height:60mm;
+    background:var(--kraft);
+    border-radius:0;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  /* subtle paper texture via layered gradients */
+  .tag::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,.35), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(0,0,0,.06), transparent 50%);
+    pointer-events:none;
+  }
+
+  .band{
+    position:absolute; top:0; left:0; right:0;
+    height:15mm;
+    background:var(--forest);
+    display:flex;
+    align-items:center;
+    padding:0 6mm;
+    z-index:2;
+  }
+  .band::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:-4mm; height:4mm;
+    background:var(--forest);
+    clip-path:polygon(0 0, 100% 0, 100% 30%, 0 100%);
+  }
+  .name{
+    font-family:'Playpen Sans Deva', cursive;
+    font-weight:600;
+    font-style:normal;
+    font-size:26px;
+    color:var(--cream);
+    letter-spacing:.02em;
+  }
+
+  .photo-wrap{
+    position:absolute;
+    left:2mm; top:20mm;
+    width:38mm; height:38mm;
+    background:#ffffff;
+    border-radius:50%;
+    background-size:cover;
+    background-position:center;
+    box-shadow:0 3mm 5mm -2mm rgba(43,38,32,.35), inset 0 0 0 1.4mm var(--kraft-dark);
+    z-index:2;
+  }
+
+  .origin-block{
+    position:absolute;
+    left:41mm; top:56.5mm;
+    font-family:'Inter',sans-serif;
+    font-size:9.5px;
+    color:var(--forest-deep);
+    z-index:2;
+  }
+
+  .quality-stamp{
+    position:absolute;
+    left:37mm; top:20.5mm;
+    width:12mm; height:12mm;
+    border-radius:50%;
+    border:.5mm dashed var(--rust);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-14deg);
+    z-index:3;
+  }
+  .quality-stamp span{
+    font-family:'Inter',sans-serif;
+    font-weight:800;
+    font-size:8px;
+    color:var(--rust);
+    text-align:center;
+    line-height:1.15;
+    letter-spacing:.03em;
+  }
+
+  .price-badge{
+    position:absolute;
+    right:4mm; top:22mm;
+    width:45mm;
+    background:#ffffff;
+    border-radius:2mm;
+    padding:6mm 3mm 2.2mm;
+    box-shadow:0 2mm 5mm rgba(43,38,32,.2);
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    z-index:2;
+  }
+  .price-num{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:58px;
+    color:#000000;
+    line-height:.85;
+    display:flex;
+    align-items:flex-start;
+  }
+  .price-num sup{
+    font-size:22px;
+    font-weight:700;
+    margin-left:2px;
+    margin-top:4px;
+  }
+  .price-unit{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    color:var(--forest-deep);
+    letter-spacing:.04em;
+    margin-top:1mm;
+  }
+
+  .code{
+    position:absolute;
+    right:4mm; bottom:2.5mm;
+    font-family:'Inter',sans-serif;
+    font-size:7px;
+    color:rgba(43,38,32,.45);
+    letter-spacing:.03em;
+    z-index:2;
+  }
+
+  .notes{
+    margin-top:26px;
+    max-width:420px;
+    font-size:13px;
+    line-height:1.55;
+    color:#5b5346;
+    text-align:center;
+  }
+  .swatches{
+    display:flex; gap:8px; justify-content:center; margin-top:14px;
+  }
+  .sw{ width:22px; height:22px; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+</style>
 </head>
 <body>
-test1
+
+  <div class="page-label">Farebná alternatíva <b>č. 1</b> — „Trhovisko“ (kraft &amp; hlboká zelená)</div>
+
+  <div class="tag">
+    <div class="band">
+      <div class="name">Petržlen</div>
+    </div>
+
+    <div class="photo-wrap" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAK8Ae8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9U6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoooo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OO3MgGPMcAb3+rNub8a6Cmr/AC4p1faQioRUY7I+dlJyd2FFFFUIKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApD7HFLRQAUyQZU+3Ip9IeQRSYHxh8aNPuPA8fivwNKkS2c7T67o7Equ60mkzNGoJG4xylgVHIV1OOtdt+xR4JfSvDGo+M5oZFXUFjsrVnXBcRlnmdf9gyPtB7+VnvXSftQ2Wn6x4b0bQIbNbnxBfakiaaiRhptnScqeoXawBHfK16N8JLOew+GPhawvLZYJ7bSLWKWMdFZY1DfqCfxr5/C4SMMfKz0jqvn0+V/wAj1a1dywq8zrkGFp1FIDmvoTyhaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigDKuPD2kXWsQ67c2qy3ltEYoHfkRAtlio7EnGT7CtJY1UbV4HpT6KlQjHVIbk3uJjjFA4FLRVCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==)"></div>
+
+    <div class="quality-stamp"><span>I.<br>akosť</span></div>
+
+    <div class="price-badge">
+      <div class="price-num">2,99<sup>€</sup></div>
+      <div class="price-unit">za kg</div>
+    </div>
+
+    <div class="origin-block">Pôvod: Portugalsko</div>
+    <div class="code">579</div>
+  </div>
+
+  <div class="swatches">
+    <div class="sw" style="background:#DDC9A3"></div>
+    <div class="sw" style="background:#33502F"></div>
+    <div class="sw" style="background:#B5541F"></div>
+    <div class="sw" style="background:#F7F1E4"></div>
+  </div>
+
+  <div class="notes">
+    Toto je prvá farebná alternatíva — kraftový podklad, hlboká zelená stužka na názov a pečiatka kvality namiesto strohej čiernobielej tabuľky. Fotka je z vášho súboru (petržlen). Ak sa vám smer páči, poviem, pripravím ďalšiu alternatívu pre ďalší produkt/farbu — ak nie, skúsim iný štýl.
+  </div>
+
 </body>
 </html>

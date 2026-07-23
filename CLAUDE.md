@@ -20,18 +20,10 @@ Live version: hosted on GitHub Pages from this repo (`cenovky-zelenina`).
   items only, not used in this base template.
 - **Price:** black text (#000) on a white rounded chip, NOT colored.
   Font: **Space Grotesk**, weight 700.
-- **Product name:** cream text on the dark green band. Font: **Oswald
-- EB Garamond
-https://fonts.google.com/specimen/EB+Garamond
-Playpen Sans Deva 
-Libre Baskerville 
-Gluten
-merienda
-amita**,
+- **Product name:** cream text on the dark green band. Font: **Oswald**,
   weight 600, upright (not italic), letter-spacing .02em.
   (History: went through Fraunces italic → Fraunces upright → Playfair
-  Display italic → DM Serif Display → Oswald. Serif options kept getting
-  flagged as either illegible or too stiff; Oswald.)
+  Display italic → DM Serif Display → Oswald. )
 - **Photo:** circular crop, ring border via `inset box-shadow`, sits behind
   the price chip and quality stamp. Source photos in the original spreadsheet
   are black-and-white line-art style; when colorizing, use a duotone

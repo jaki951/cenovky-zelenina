@@ -183,6 +183,31 @@
     [contenteditable="true"]:focus{
       outline:none;
     }
+    .save-bar{ display:none; }
+  }
+
+  .save-bar{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .save-bar button{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--cream);
+    background:var(--forest);
+    border:none;
+    border-radius:1.5mm;
+    padding:8px 16px;
+    cursor:pointer;
+  }
+  .save-bar button:hover{ background:var(--forest-deep); }
+  #saveStatus{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    color:#5b5346;
   }
 </style>
 </head>
@@ -198,18 +223,47 @@
     <div class="quality-stamp"><span>I.<br>akosť</span></div>
 
     <div class="price-badge">
-      <div class="price-num"><span contenteditable="true">2,99</span><sup>€</sup></div>
-      <div class="price-unit">za <span contenteditable="true">kg</span></div>
+      <div class="price-num"><span class="field-cena" contenteditable="true">2,99</span><sup>€</sup></div>
+      <div class="price-unit">za <span class="field-jednotka" contenteditable="true">kg</span></div>
     </div>
 
-    <div class="origin-block">Pôvod: <span contenteditable="true">Portugalsko</span></div>
+    <div class="origin-block">Pôvod: <span class="field-povod" contenteditable="true">Portugalsko</span></div>
     <div class="code">579</div>
+  </div>
+
+  <div class="save-bar">
+    <button id="saveBtn">Uložiť do tabuľky</button>
+    <span id="saveStatus"></span>
   </div>
 
   <script>
     document.querySelectorAll('[contenteditable="true"]').forEach(function(el){
       el.addEventListener('keydown', function(e){
         if (e.key === 'Enter') e.preventDefault();
+      });
+    });
+
+    var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwWe1Us8rcQ8rLt7Jh2oCHQRj-o_agiYN5hY3d7Ol54sL6Abj6TduSRh0ZylsoK6zAL/exec';
+
+    document.getElementById('saveBtn').addEventListener('click', function(){
+      var status = document.getElementById('saveStatus');
+      var payload = {
+        nazov: document.querySelector('.name').textContent.trim(),
+        cena: document.querySelector('.field-cena').textContent.trim(),
+        jednotka: document.querySelector('.field-jednotka').textContent.trim(),
+        povod: document.querySelector('.field-povod').textContent.trim()
+      };
+      status.textContent = 'Ukladám…';
+      fetch(SHEET_WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      }).then(function(){
+        status.textContent = 'Uložené ✓';
+        setTimeout(function(){ status.textContent = ''; }, 3000);
+      }).catch(function(){
+        status.textContent = 'Chyba pri ukladaní';
       });
     });
   </script>

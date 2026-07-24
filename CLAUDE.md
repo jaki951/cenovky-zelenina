@@ -20,10 +20,12 @@ Live version: hosted on GitHub Pages from this repo (`cenovky-zelenina`).
   items only, not used in this base template.
 - **Price:** black text (#000) on a white rounded chip, NOT colored.
   Font: **Space Grotesk**, weight 700.
-- **Product name:** cream text on the dark green band. Font: **Oswald**,
-  weight 600, upright (not italic), letter-spacing .02em.
+- **Product name:** cream text on the dark green band. Font: **Playpen Sans
+  Deva**, weight 600, upright (not italic), letter-spacing .02em, nudged
+  slightly below vertical center in the band (line-height:1, margin-top:2mm).
   (History: went through Fraunces italic → Fraunces upright → Playfair
-  Display italic → DM Serif Display → Oswald. )
+  Display italic → DM Serif Display → Oswald → EB Garamond/Libre
+  Baskerville/Gluten/Merienda/Amita comparison → Playpen Sans Deva.)
 - **Photo:** circular crop, ring border via `inset box-shadow`, sits behind
   the price chip and quality stamp. Source photos in the original spreadsheet
   are black-and-white line-art style; when colorizing, use a duotone
@@ -32,8 +34,9 @@ Live version: hosted on GitHub Pages from this repo (`cenovky-zelenina`).
   arbitrary), with a soft blended transition at the neck, not a hard seam.
 - **Quality stamp** ("I. akosť"): small dashed-circle badge, positioned to
   not collide with the enlarged price chip.
-- **Origin** (Pôvod): shown as plain text, must stay visible/legible — this
-  was a specific requirement, don't let other elements crowd it out.
+- **Origin** (Pôvod): white chip anchored to the bottom edge of the card,
+  rounded only on the top corners (like a tab), not floating free — must
+  stay visible/legible, don't let other elements crowd it out.
 
 ## Process rules (user preference — important)
 - Ask before making any change beyond exactly what was requested — don't

@@ -5,7 +5,7 @@
 <title>Cenovka – Alternatíva 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Deva:wght@600&family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --kraft: #DDC9A3;
@@ -73,12 +73,14 @@
     clip-path:polygon(0 0, 100% 0, 100% 30%, 0 100%);
   }
   .name{
-    font-family:'Playfair Display', serif;
+    font-family:'Playpen Sans Deva', cursive;
     font-weight:600;
-    font-style:italic;
-    font-size:27px;
+    font-style:normal;
+    font-size:26px;
     color:var(--cream);
-    letter-spacing:.01em;
+    letter-spacing:.02em;
+    line-height:1;
+    margin-top:2mm;
   }
 
   .photo-wrap{
@@ -95,9 +97,15 @@
 
   .origin-block{
     position:absolute;
-    left:41mm; top:56.5mm;
+    left:41mm; top:54.9mm;
+    background:#ffffff;
+    padding:0.9mm 2.6mm;
+    border-radius:50em;
+    box-shadow:0 0.5mm 1mm rgba(43,38,32,.12);
     font-family:'Inter',sans-serif;
-    font-size:9.5px;
+    font-weight:500;
+    font-size:9px;
+    letter-spacing:.01em;
     color:var(--forest-deep);
     z-index:2;
   }

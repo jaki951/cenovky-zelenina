@@ -245,6 +245,16 @@
 
     var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwczMaroPntB9EvMPqwLSja4cRky2u3WeIfTiA76AS85tBcsZ4Pz2ngV1FfjQx9rCK0/exec';
 
+    fetch(SHEET_WEBAPP_URL)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.nazov) document.querySelector('.name').textContent = data.nazov;
+        if (data.cena) document.querySelector('.field-cena').textContent = data.cena;
+        if (data.jednotka) document.querySelector('.field-jednotka').textContent = data.jednotka;
+        if (data.povod) document.querySelector('.field-povod').textContent = data.povod;
+      })
+      .catch(function(){ /* keep default values shown in the HTML */ });
+
     document.getElementById('saveBtn').addEventListener('click', function(){
       var status = document.getElementById('saveStatus');
       var payload = {

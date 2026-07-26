@@ -5,7 +5,7 @@
 <title>Cenovky – všetky produkty</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Deva:wght@600&family=Protest+Riot&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Deva:wght@600&family=Playpen+Sans:wght@800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --kraft: #DDC9A3;
@@ -179,16 +179,18 @@
     align-items:flex-end;
     z-index:2;
   }
+  /* Playpen Sans is much wider than the previous face, so the size is set by the
+     widest price that has to fit the chip (10,60) rather than by taste alone */
   .price-num{
-    font-family:'Protest Riot', sans-serif;
-    font-weight:400;
-    font-size:66px;
+    font-family:'Playpen Sans', cursive;
+    font-weight:800;
+    font-size:54px;
     color:#000000;
     line-height:.85;
     display:flex;
     align-items:flex-start;
   }
-  .price-num.long{ font-size:57px; }
+  .price-num.long{ font-size:45px; }
   .price-num sup{
     font-size:22px;
     font-weight:700;

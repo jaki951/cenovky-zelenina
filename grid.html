@@ -211,17 +211,14 @@
   .tag{ cursor:grab; }
   .tag .name, .tag .price-num, .tag .price-unit,
   .tag .origin-block, .tag .code, .tag .quality-stamp{ cursor:text; }
-  .tag.dragging{ cursor:grabbing; opacity:.4; pointer-events:none; }
-  .tag.drop-before::after,
-  .tag.drop-after::after{
-    content:"";
-    position:absolute; top:0; bottom:0;
-    width:1.2mm;
-    background:var(--rust);
-    z-index:9;
+  /* while dragging, the tag itself is the preview: it sits in the slot it would land in */
+  .tag.dragging{
+    cursor:grabbing;
+    opacity:.55;
+    pointer-events:none;
+    outline:1mm solid var(--rust);
+    outline-offset:-1mm;
   }
-  .tag.drop-before::after{ left:-0.6mm; }
-  .tag.drop-after::after{ right:-0.6mm; }
 
   @media print{
     @page{ size:A4 portrait; margin:4mm; }
@@ -963,12 +960,6 @@
   var start = null;
   var dragging = null;
 
-  function clearMarks(){
-    document.querySelectorAll('.drop-before, .drop-after').forEach(function(el){
-      el.classList.remove('drop-before', 'drop-after');
-    });
-  }
-
   // keep every page filled with exactly PER_PAGE tags, in document order
   function repaginate(){
     var tags = Array.prototype.slice.call(document.querySelectorAll('.tag'));
@@ -987,13 +978,22 @@
     return el && el.closest ? el.closest('.tag') : null;
   }
 
-  function mark(t, x){
-    clearMarks();
-    if (!t || t === dragging) return null;
+  function allTags(){
+    return Array.prototype.slice.call(document.querySelectorAll('.tag'));
+  }
+
+  // live preview: drop the dragged tag straight into the hovered slot
+  function previewAt(t, x){
+    var tags = allTags();
+    var di = tags.indexOf(dragging);
+    var ti = tags.indexOf(t);
+    if (di < 0 || ti < 0) return;
     var r = t.getBoundingClientRect();
     var after = (x - r.left) > r.width / 2;
-    t.classList.add(after ? 'drop-after' : 'drop-before');
-    return after;
+    var target = after ? ti + 1 : ti;
+    if (target === di || target === di + 1) return;   // already sitting there
+    t.parentNode.insertBefore(dragging, after ? t.nextSibling : t);
+    repaginate();
   }
 
   document.addEventListener('mousedown', function(e){
@@ -1012,21 +1012,13 @@
       dragging = start.tag;
       dragging.classList.add('dragging');
     }
-    mark(tagAt(e.clientX, e.clientY), e.clientX);
+    var t = tagAt(e.clientX, e.clientY);
+    if (t && t !== dragging) previewAt(t, e.clientX);
   });
 
-  document.addEventListener('mouseup', function(e){
-    if (dragging){
-      var t = tagAt(e.clientX, e.clientY);
-      if (t && t !== dragging){
-        var r = t.getBoundingClientRect();
-        var after = (e.clientX - r.left) > r.width / 2;
-        t.parentNode.insertBefore(dragging, after ? t.nextSibling : t);
-        repaginate();
-      }
-      dragging.classList.remove('dragging');
-    }
-    clearMarks();
+  document.addEventListener('mouseup', function(){
+    // the tag already sits where it was previewed, so just drop the drag styling
+    if (dragging) dragging.classList.remove('dragging');
     start = null;
     dragging = null;
   });

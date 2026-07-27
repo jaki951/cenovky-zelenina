@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>Ručne písané fonty pre cenu – test 1 vs 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Riot&family=Permanent+Marker&family=Caveat:wght@700&family=Kalam:wght@700&family=Bangers&family=Luckiest+Guy&family=Gochi+Hand&family=Just+Another+Hand&family=Sriracha&family=Mali:wght@700&family=Playpen+Sans:wght@800&family=Grandstander:wght@800&family=Chewy&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --forest-deep:#223A20; --rust:#B5541F; --ink:#2B2620; --forest:#33502F; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:#EDE7DA; font-family:'Inter',sans-serif; color:var(--ink);
+    padding:24px 16px 60px;
+  }
+  h1{ font-size:15px; font-weight:700; margin-bottom:4px; }
+  .lead{ font-size:12.5px; color:#5b5346; margin-bottom:20px; max-width:680px; line-height:1.5; }
+  .lead b{ color:var(--rust); }
+
+  .row{
+    display:flex; align-items:center; gap:18px;
+    background:#fff; border-radius:2mm; padding:10px 16px; margin-bottom:10px;
+    box-shadow:0 1px 3px rgba(43,38,32,.12); max-width:920px;
+  }
+  .row.ref{ outline:2px solid var(--rust); }
+  .row.pick{ outline:2px solid var(--forest); }
+  .label{ width:140px; flex:none; font-size:12px; font-weight:600; color:var(--forest-deep); line-height:1.3; }
+  .label small{ display:block; font-weight:400; color:#8a8070; font-size:10.5px; }
+  .label small.ok{ color:var(--forest); font-weight:600; }
+
+  .price-num{
+    font-size:52px; color:#000; line-height:.85;
+    display:flex; align-items:flex-start; width:215px; flex:none;
+  }
+  .price-num sup{ font-size:20px; font-weight:700; margin-left:2px; margin-top:4px; }
+  .digits{ font-size:26px; color:#000; letter-spacing:.02em; }
+
+  .f-riot     .price-num, .f-riot     .digits{ font-family:'Protest Riot',sans-serif; }
+  .f-marker   .price-num, .f-marker   .digits{ font-family:'Permanent Marker',cursive; }
+  .f-caveat   .price-num, .f-caveat   .digits{ font-family:'Caveat',cursive; font-weight:700; }
+  .f-kalam    .price-num, .f-kalam    .digits{ font-family:'Kalam',cursive; font-weight:700; }
+  .f-bangers  .price-num, .f-bangers  .digits{ font-family:'Bangers',cursive; }
+  .f-luckiest .price-num, .f-luckiest .digits{ font-family:'Luckiest Guy',cursive; }
+  .f-gochi    .price-num, .f-gochi    .digits{ font-family:'Gochi Hand',cursive; }
+  .f-jah      .price-num, .f-jah      .digits{ font-family:'Just Another Hand',cursive; }
+  .f-sriracha .price-num, .f-sriracha .digits{ font-family:'Sriracha',cursive; }
+  .f-mali     .price-num, .f-mali     .digits{ font-family:'Mali',cursive; font-weight:700; }
+  .f-playpen  .price-num, .f-playpen  .digits{ font-family:'Playpen Sans',cursive; font-weight:800; }
+  .f-grand    .price-num, .f-grand    .digits{ font-family:'Grandstander',cursive; font-weight:800; }
+  .f-chewy    .price-num, .f-chewy    .digits{ font-family:'Chewy',cursive; }
+</style>
+</head>
+<body>
+
+  <h1>Ručne písané fonty pre cenu – kontrola <b>7</b> vs <b>1</b></h1>
+  <div class="lead">Cena „17,99“ má 1 a 7 hneď vedľa seba. Prvý riadok je predchádzajúci
+    <b>Protest Riot</b> (orámovaný červeno), kde sedmička splývala s jednotkou.
+    Zeleno je označený vybraný font, ktorý je teraz v <a href="grid.html">grid.html</a>.
+    Tlačené / plakátové varianty sú v <a href="fonty-cena.html">fonty-cena.html</a>.</div>
+
+  <div class="row ref f-riot">
+    <div class="label">Protest Riot<small>predtým použitý – 7 splýva s 1</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row pick f-playpen">
+    <div class="label">Playpen Sans 800<small class="ok">vybraný – rovnaká rodina ako názov</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-marker">
+    <div class="label">Permanent Marker<small>fixka, ťažká</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-bangers">
+    <div class="label">Bangers<small>komiksová fixka</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-luckiest">
+    <div class="label">Luckiest Guy<small>komiksová, veľmi tuká</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-kalam">
+    <div class="label">Kalam 700<small>pero, ťažké</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-grand">
+    <div class="label">Grandstander 800<small>zaoblená, hravá</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-chewy">
+    <div class="label">Chewy<small>skúšali sme predtým</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-sriracha">
+    <div class="label">Sriracha<small>štetec, mäkký</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-gochi">
+    <div class="label">Gochi Hand<small>ceruzka/pero – na cenu tenké</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-mali">
+    <div class="label">Mali 700<small>pero, jemné – na cenu tenké</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-caveat">
+    <div class="label">Caveat 700<small>pero – na cenu tenké</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-jah">
+    <div class="label">Just Another Hand<small>úzke, vysoké – na cenu tenké</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+</body>
+</html>

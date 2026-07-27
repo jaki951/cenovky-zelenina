@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<title>Fonty pre cenu – tlačené, test 1 vs 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Riot&family=Protest+Strike&family=Protest+Guerrilla&family=Anton&family=Archivo+Black&family=Bowlby+One&family=Titan+One&family=Lilita+One&family=Passion+One:wght@700&family=Baloo+2:wght@800&family=Bakbak+One&family=Rowdies:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest-deep: #223A20;
+    --rust: #B5541F;
+    --ink: #2B2620;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:#EDE7DA;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    padding:24px 16px 60px;
+  }
+  h1{ font-size:15px; font-weight:700; letter-spacing:.02em; margin-bottom:4px; }
+  .lead{ font-size:12.5px; color:#5b5346; margin-bottom:20px; max-width:660px; line-height:1.5; }
+  .lead b{ color:var(--rust); }
+
+  .row{
+    display:flex; align-items:center; gap:18px;
+    background:#fff; border-radius:2mm;
+    padding:10px 16px; margin-bottom:10px;
+    box-shadow:0 1px 3px rgba(43,38,32,.12);
+    max-width:900px;
+  }
+  .row.ref{ outline:2px solid var(--rust); }
+  .label{
+    width:130px; flex:none;
+    font-size:12px; font-weight:600; color:var(--forest-deep);
+    line-height:1.3;
+  }
+  .label small{ display:block; font-weight:400; color:#8a8070; font-size:10.5px; }
+
+  /* the actual price treatment from the tag */
+  .price-num{
+    font-weight:400;
+    font-size:52px;
+    color:#000;
+    line-height:.85;
+    display:flex; align-items:flex-start;
+    width:210px; flex:none;
+  }
+  .price-num sup{ font-size:20px; font-weight:700; margin-left:2px; margin-top:4px; }
+  .digits{ font-size:26px; color:#000; letter-spacing:.02em; }
+
+  .f-riot .price-num, .f-riot .digits{ font-family:'Protest Riot',sans-serif; }
+  .f-strike .price-num, .f-strike .digits{ font-family:'Protest Strike',sans-serif; }
+  .f-guerrilla .price-num, .f-guerrilla .digits{ font-family:'Protest Guerrilla',sans-serif; }
+  .f-anton .price-num, .f-anton .digits{ font-family:'Anton',sans-serif; }
+  .f-archivoblack .price-num, .f-archivoblack .digits{ font-family:'Archivo Black',sans-serif; }
+  .f-bowlby .price-num, .f-bowlby .digits{ font-family:'Bowlby One',sans-serif; }
+  .f-titan .price-num, .f-titan .digits{ font-family:'Titan One',sans-serif; }
+  .f-lilita .price-num, .f-lilita .digits{ font-family:'Lilita One',sans-serif; }
+  .f-passion .price-num, .f-passion .digits{ font-family:'Passion One',sans-serif; font-weight:700; }
+  .f-baloo .price-num, .f-baloo .digits{ font-family:'Baloo 2',cursive; font-weight:800; }
+  .f-bakbak .price-num, .f-bakbak .digits{ font-family:'Bakbak One',sans-serif; }
+  .f-rowdies .price-num, .f-rowdies .digits{ font-family:'Rowdies',cursive; font-weight:700; }
+</style>
+</head>
+<body>
+
+  <h1>Fonty pre cenu – tlačené / plakátové, kontrola <b>7</b> vs <b>1</b></h1>
+  <div class="lead">Cena je zámerne „17,99“, aby boli 1 a 7 hneď vedľa seba.
+    <b>Protest Riot</b> (orámovaný) mal sedmičku takmer bez diagonály, preto splývala s jednotkou.
+    Nakoniec padla voľba na ručne písaný font – pozri <a href="fonty-cena2.html">fonty-cena2.html</a>.</div>
+
+  <div class="row ref f-riot">
+    <div class="label">Protest Riot<small>predtým použitý – 7 splýva s 1</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-strike">
+    <div class="label">Protest Strike<small>rovnaká rodina</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-guerrilla">
+    <div class="label">Protest Guerrilla<small>rovnaká rodina</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-bowlby">
+    <div class="label">Bowlby One<small>ťažký, hravý</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-titan">
+    <div class="label">Titan One<small>ťažký, hravý</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-lilita">
+    <div class="label">Lilita One<small>ťažký, mierne úzky</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-baloo">
+    <div class="label">Baloo 2<small>zaoblený, ťažký</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-rowdies">
+    <div class="label">Rowdies<small>zaoblený, hravý</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-bakbak">
+    <div class="label">Bakbak One<small>ťažký sans</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-passion">
+    <div class="label">Passion One<small>úzky, plakátový</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-anton">
+    <div class="label">Anton<small>úzky, plakátový</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+  <div class="row f-archivoblack">
+    <div class="label">Archivo Black<small>úplne pôvodný font ceny</small></div>
+    <div class="price-num">17,99<sup>€</sup></div>
+    <div class="digits">0123456789</div>
+  </div>
+
+</body>
+</html>
